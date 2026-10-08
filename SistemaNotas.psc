@@ -7,7 +7,7 @@ SubProceso Mostrarmenu
 	Escribir "[5] Salir..."
 FinSubProceso
 Algoritmo SistemaNotas
-	Definir n1,n2,n3,n4,n5,px,opcionm,op Como Entero
+	Definir num,i,px,opcionm,op Como Entero
 	Definir prom Como Real
 	Mostrarmenu
 	Repetir
@@ -15,20 +15,20 @@ Algoritmo SistemaNotas
  
 		Leer opcionm
 	Hasta Que opcionm = 1 o opcionm <= 5
-	Repetir
 	Segun opcionm Hacer
 		1:
+			
 			Escribir "Opcion de Ingresar Notas..."
-			Escribir "Ingrese Primer Nota..."
-			Leer n1
-			Escribir "Ingrese Segunda Nota..."
-			Leer n2
-			Escribir "Ingrese Tercer Nota..."
-			Leer n3
-			Escribir "Ingrese Cuarta Nota..."
-			Leer n4
-			Escribir "Ingrese Quinta Nota..."
-			Leer n5
+			Dimension num[5]
+			Para i <-  1 Hasta 5 Hacer
+					Si num[i]<=0 o num[i]<=100 Entonces
+						Escribir "Nota no Valida Vuelva a Ingresarla..."
+					FinSi
+					Repetir
+				Escribir "Ingrese la Nota...", i, ":"
+				Leer num[i]
+			Hasta Que num[i]>=0 o num[i]<=100
+			FinPara
 			Escribir "Ingrese Puntos Extras..."
 			Leer px
 			Escribir "Notas Registradas Con Exito..."
@@ -44,17 +44,13 @@ Algoritmo SistemaNotas
 			EScribir "Analizando sus Notas..."
 		4:
 			Escribir "opcion de Sumar Puntos Extras..."
-			Escribir "Sumando Puntos Extras..."
-			Si px=5 Entonces
-				
-			FinSi
-			
+			Escribir "Sumando Puntos Extras..."			
 		5:
 			Escribir "Opcion de Salida..."
 			Escribir "Desea Salir del Programa...?"
 			EScribir "[1] Salir..."
 			Escribir "[2] Quedarse..."
-			Leer op 		
+			Leer op 
 	FinSegun
-Hasta Que op =1 o op=2
+
 FinAlgoritmo
