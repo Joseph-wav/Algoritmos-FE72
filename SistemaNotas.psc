@@ -1,5 +1,6 @@
 SubProceso Mostrarmenu
 	Escribir "================"
+	Escribir "SISTEMA DE NOTAS FE279"
 	EScribir "[1] Ingresar Notas..."
 	Escribir "[2] Mostra Notas y Categorias..."
 	Escribir "[3] Estadisticas..."
@@ -8,7 +9,7 @@ SubProceso Mostrarmenu
 FinSubProceso
 Algoritmo SistemaNotas
 	Definir num,i,px,opcionm,op Como Entero
-	Definir prom Como Real
+	Definir prom,suma Como Real
 	Mostrarmenu
 	Repetir
 		Escribir "Seleccione una opcion de 1 - 5"
@@ -21,24 +22,24 @@ Algoritmo SistemaNotas
 			Escribir "Opcion de Ingresar Notas..."
 			Dimension num[5]
 			Para i <-  1 Hasta 5 Hacer
-					Si num[i]<=0 o num[i]<=100 Entonces
+				Repetir
+					Escribir "Ingrese la Nota...", i, ":"
+					Leer num[i]
+					Si num[i]<0  o num[i]>100 Entonces
 						Escribir "Nota no Valida Vuelva a Ingresarla..."
 					FinSi
-					Repetir
-				Escribir "Ingrese la Nota...", i, ":"
-				Leer num[i]
-			Hasta Que num[i]>=0 o num[i]<=100
+				Hasta Que num[i]>=0 y num[i]<=100
 			FinPara
 			Escribir "Ingrese Puntos Extras..."
 			Leer px
 			Escribir "Notas Registradas Con Exito..."
 		2: 
 			Escribir "Opcion de Mostrar Notas y Categorias..."
-			Escribir "Obteniendo Notas..."
-			Escribir "Sus Notas Son..." ,n1,n2,n3,n4,n5
-			Escribir "Realizando Promedio..."
-			prom <- (n1 + n2 + n3 + n4 + n5) / 5
-			Escribir "La Nota mas Alta Es..."
+			Dimension num[5]
+			Para i <- 1 Hasta 5 Hacer
+				Escribir "Nota...", i, ":", num[i]
+			FinPara
+
 		3:
 			Escribir "Opcion de Estadisticas..."
 			EScribir "Analizando sus Notas..."
@@ -49,8 +50,12 @@ Algoritmo SistemaNotas
 			Escribir "Opcion de Salida..."
 			Escribir "Desea Salir del Programa...?"
 			EScribir "[1] Salir..."
-			Escribir "[2] Quedarse..."
-			Leer op 
+			Si op = 1 Entonces
+				Escribir "Saliendo del Programa..."
+				Leer op
+			FinSi
+			
 	FinSegun
+	
 
 FinAlgoritmo
