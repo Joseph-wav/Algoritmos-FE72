@@ -1,5 +1,5 @@
 SubProceso mostrartitulo
-	Escribir "====================="
+	Escribir "	====================="
 	Escribir " Laboratorio De Algoritmos "
 	Escribir "====================="
 FinSubProceso
